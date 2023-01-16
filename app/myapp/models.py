@@ -13,11 +13,12 @@ More detailed sqlalchemy documentations can be found [here](https://www.sqlalche
 """
 import os
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask import url_for
 from flask_login import UserMixin
 
-from app.myapp import login, db
+from myapp import login, db
 
-from app.myapp import FriendStatusEnum
+from myapp.models_enum import FriendStatusEnum
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 

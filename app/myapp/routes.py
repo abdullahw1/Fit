@@ -23,15 +23,24 @@ Detailed flask documentation can be found [here](https://flask.palletsprojects.c
 
 """
 
+import os
+import tempfile
+import random
+import pathlib
 from datetime import datetime
 import markdown
 from base64 import b64encode
-from flask import render_template, flash, redirect, url_for, request, jsonify, abort
+from flask import render_template, flash, redirect, url_for, request, jsonify, abort, send_file
 from werkzeug.security import generate_password_hash
 from flask_login import current_user, login_user, logout_user, login_required
+from xhtml2pdf import pisa
+from werkzeug.utils import secure_filename
 
-from app.myapp import *
-from app.myapp.models_methods import *
+
+from myapp import myapp_obj, db
+from myapp.forms import *
+from myapp.models import *
+from myapp.models_methods import *
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
