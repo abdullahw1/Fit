@@ -1,1 +1,1 @@
-web: gunicorn app run:myapp_obj
+web: gunicorn app:run
