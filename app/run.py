@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
-import threading
 import webbrowser
-from myapp import myapp_obj, db
+from app.myapp import myapp_obj, db
 
 DEBUG = False
 

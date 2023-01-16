@@ -13,12 +13,11 @@ More detailed WTForm documentations can be found [here](https://wtforms.readthed
 
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed, FileRequired
-from flask_pagedown.fields import PageDownField
 from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField, SelectField, IntegerField
-from wtforms.validators import DataRequired, InputRequired, Email, EqualTo
+from wtforms.validators import DataRequired, Email, EqualTo
 from wtforms import ValidationError
 
-from myapp.models import User
+from app.myapp import User
 
 
 class SignupForm(FlaskForm):
