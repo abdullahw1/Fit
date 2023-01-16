@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block content %}
+<button style="border:none;border-radius:9x;"><a href="/journal">← </a></button>
+<h1><Center>Journals Sharing</Center></h1>
+<br>
+<br>
+<h2>Journals | Shared With Others</h2>
+<p>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Journals</th>
+            <th scope="col">Shared With</th>
+            <th scope="col">Shared On</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for x in owner_journals %}
+        <tr>
+            <th scope="row">{{ x.journal.id }}</th>
+            <td>
+                <p>
+                    <b>{{ x.journal.name}}</b>
+                </p>
+            </td>
+            <td>
+                <p>
+                    {{ x.target_user.username }}
+                </p>
+            </td>
+            <td>
+                <p>
+                    {{ x.datetime.strftime('%Y-%m-%d %H:%M:%S') }}
+                </p>
+            </td>
+            <td>
+                <p>
+                    <a class="btn btn-outline-danger" href="/journals-sharing/cancel-sharing/{{ x.id }}">Cancel
+                        Sharing</a>
+                </p>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</p>
+<hr>
+<h2>Journals | Shared With Me</h2>
+<p>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Journals</th>
+            <th scope="col">Shared By</th>
+            <th scope="col">Shared On</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for x in target_journals %}
+        <tr>
+            <th scope="row">{{ x.journal.id }}</th>
+            <td>
+                <p>
+                    <b>{{ x.journal.name}}</b>
+                </p>
+            </td>
+            <td>
+                <p>
+                    {{ x.owner_user.username }}
+                </p>
+            </td>
+            <td>
+                <p>
+                    {{ x.datetime.strftime('%Y-%m-%d %H:%M:%S') }}
+                </p>
+            </td>
+            <td>
+                <p>
+                    <a class="btn btn-outline-success" href="/journals-sharing/add-to-myjournals/{{ x.id }}">Add To My
+                        Journals</a>
+                    <a class="btn btn-outline-danger" href="/journals-sharing/cancel-sharing/{{ x.id }}">Cancel
+                        Sharing</a>
+                </p>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</p>
+{% endblock %}

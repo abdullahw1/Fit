@@ -1,0 +1,163 @@
+{% extends "base.html" %}
+{% block content %}
+  <button style="border:none;border-radius:9x;"><a href="/my-workouts">← </a></button>
+  <style>
+
+    .createWorkout-page .error {
+      color: red;
+      font-weight: bold;
+    }
+
+    .createWorkout-page .container {
+      display: flex;
+      gap: 50px;
+      width: 90%;
+      margin: auto;
+    }
+
+    .createWorkout-page .durationSetContainer {
+       display: flex;
+    }
+
+    .createWorkout-page .column {
+      width: 50%;
+    }
+
+    .createWorkout-page fieldset.column {
+      margin-top: 15px;
+      display: flex;
+    }
+
+    .createWorkout-page fieldset.column > .column {
+      text-align: center;
+      width: auto;
+    }
+
+    .createWorkout-page fieldset.column > .column > label {
+      font-weight: bold;
+      font-size: 0.75rem;
+      margin: 10px 0 0 0;
+    }
+
+    .createWorkout-page fieldset.column > .column > input {
+      text-align: center;
+      width: 75px;
+      margin: 0 5px;
+    }
+
+    .createWorkout-page fieldset.column > .divider {
+      align-self: flex-end;
+      padding-bottom: 10px;
+    }
+
+    .createWorkout-page label {
+      margin: 15px 0;
+      display: block;
+    }
+
+    .createWorkout-page input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid rgba(0,0,0,0.2);
+    }
+
+    .createWorkout-page textarea {
+      height: 70%;
+    }
+
+    .createWorkout-page .buttonContainer {
+      text-align: center;
+      padding: 70px;
+    }
+
+    .createWorkout-page .buttonContainer > button {
+      border-radius: 5px;
+      color: white;
+      background-color: rgba(0,0,0,0.8);
+      padding: 10px 100px;
+
+    }
+
+    /* Removes browser's default styling */
+    .createWorkout-page fieldset {
+      margin-inline-start: 0;
+      margin-inline-end: 0;
+      padding-block-start: 0;
+      padding-block-end: 0;
+      padding-inline-start: 0;
+      padding-inline-end: 0;
+      border: none;
+      min-inline-size: min-content;
+  }
+
+
+  </style>
+
+
+  <div class="createWorkout-page">
+
+    <h1><center>Create a Workout</center> </h1>
+
+    <form method="POST">
+      {{ form.csrf_token }}
+      <div class="container">
+        <div class="column">
+          <div>
+            <label for="name">Give your workout a name</label>
+            <div class="error">{{form.errors.name | join(' ') }}</div>
+            {{form.name}}
+          </div>
+          <div>
+            <label for="muscle">Muscle Group</label>
+            <div class="error">{{form.errors.muscle_group | join(' ') }}</div>
+            {{form.muscle_group}}
+          </div>
+          <div class="durationSetContainer">
+
+              <!-- A label can only be associated with 1 form input, so we use fieldset to label a group (with Duration) -->
+              <fieldset class="column">
+                <legend>Duration</legend>
+                <div class="column">
+                  <div class="error">{{form.errors.duration_hour | join(' ') }}</div>
+                  <label for="hour">Hour</label>
+                  {{form.duration_hour}}
+                </div>
+                <div class="divider"> : </div>
+                <div class="column">
+                  <div class="error">{{form.errors.duration_minute | join(' ') }}</div>
+                  <label for="minute">Minute</label>
+                  {{form.duration_minute}}
+                </div>
+              </fieldset>
+
+
+              <fieldset class="column">
+                <legend>Sets / Reps</legend>
+                <div class="column">
+                  <div class="error">{{form.errors.sets | join(' ') }}</div>
+                  <label for="Sets">Sets</label>
+                  {{form.sets}}
+                </div>
+                <div class="column">
+                  <div class="error">{{form.errors.reps | join(' ') }}</div>
+                  <label for="reps">Reps</label>
+                  {{form.reps}}
+                </div>
+              </fieldset>
+
+          </div>
+        </div>
+        <div class="column">
+          <label for="workout">Workout</label>
+          {{form.description}}
+        </div>
+      </div>
+      <div class="buttonContainer">
+        <button type="submit">Add to my workouts</button>
+      </div>
+    </form>
+
+  </div>
+  {% endblock %}
+

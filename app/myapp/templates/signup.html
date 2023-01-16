@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    body {
+        overflow: hidden;
+    }
+</style>
+<div class="row">
+    <div class="col-12 col-md-6">
+        <img style="margin-left:20px; width:91%; min-height:91vh;", src="{{url_for('static',filename='images/girl_with_books.png')}}" alt="girl_with_books">
+    </div>
+    <div class="col-12 col-md-6">
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            {{ render_hidden_errors(form) }}
+            {{ render_field(form.email) }}
+            {{ render_field(form.username) }}
+            {{ render_field(form.password) }}
+            {{ render_field(form.password2) }}
+            {{ render_field(form.submit) }}
+        </form>
+        <br>
+        <p>Already have an account?&nbsp;
+            <a href="/login">Log In</a>
+        </p>
+    </div>
+</div>
+
+</div>
+{% endblock %}
