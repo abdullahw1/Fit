@@ -3,7 +3,7 @@ import webbrowser
 from myapp import myapp_obj, db
 
 DEBUG = False
-PORT_NUMBER = 5019
+PORT_NUMBER = 5090
 
 
 
