@@ -23,7 +23,7 @@ WTForms = "==2.3.3"
 Bootstrap-Flask = "==1.8.0"
 Flask-PageDown = "==0.4.0"
 Markdown = "==3.3.6"
-
+flask-bootstrap = "==3.3.7.1"
 
 [dev-packages]
 
